@@ -1986,6 +1986,7 @@ En este tema sobre **El lenguaje PHP**, se estudian los fundamentos de este leng
 ### V. Novedades de PHP 8.5 (2.9)
 
 Esta versión (noviembre 2025) introduce mejoras significativas:
+
 *   **Operador Pipe (`|>`):** Permite encadenar funciones de izquierda a derecha de forma más legible.
 *   **Clone With:** Facilita la clonación de objetos modificando propiedades específicas en el mismo paso.
 *   **Funciones `array_first()` y `array_last()`:** Acceso directo a los extremos de un array.
