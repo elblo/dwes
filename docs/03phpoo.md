@@ -1498,7 +1498,7 @@ Cada clase debe ir en un archivo php separado. Para facilitar su implementación
 Llegados a este punto, nuestro modelo es similar al siguiente diagrama:
 
 <figure>
-    <img src="imagenes/03/03alquilerMovilidad1.png" width="600">
+    <img src="imagenes/03/03alquilerMovilidad1.png" width="800">
     <figcaption>Modelo inicial de Alquiler de Movilidad Urbana</figcaption>
 </figure>
 
@@ -1630,7 +1630,7 @@ Crea el archivo `inicio2.php` con el siguiente código fuente para probar la cla
 El modelo completo quedará de la siguiente manera:
 
 <figure>
-    <img src="imagenes/03/03alquilerMovilidad2.png" width="800">
+    <img src="imagenes/03/03alquilerMovilidad2.png" width="1000">
     <figcaption>Modelo completo de Alquiler de Movilidad Urbana</figcaption>
 </figure>
 
