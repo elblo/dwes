@@ -1372,7 +1372,7 @@ Antes de nada, crea un repositorio privado en GitHub y sube el proyecto actual. 
 Cada clase debe ir en un archivo php separado. Para facilitar su implementación, se muestra la estructura UML del modelo y un fragmento de código para probar las clases:
 
 <figure style="float: right;">
-    <img src="imagenes/03/03p320.png" width="150">
+    <img src="imagenes/03/03p320.png" width="200">
     <figcaption>Creamos el Vehículo</figcaption>
 </figure>
 
@@ -1405,12 +1405,8 @@ Cada clase debe ir en un archivo php separado. Para facilitar su implementación
     3 € (IVA no incluido)
     </pre>
 
-<figure style="float: right;">
-    <img src="imagenes/03/03p321.png" width="150">
-    <figcaption>Añadimos Patinete</figcaption>
-</figure>
 
-321. Crea la clase `Patinete` la cual hereda de `Vehiculo`. Añade el atributo `autonomiaKm` (y opcionalmente `velocidadMaxKmH`) y sobreescribe tanto el constructor como el método `muestraResumen` (desde `Patinete` deberás llamar al método `muestraResumen` del padre).
+321.   Crea la clase `Patinete` la cual hereda de `Vehiculo`. Añade el atributo `autonomiaKm` (y opcionalmente `velocidadMaxKmH`) y sobreescribe tanto el constructor como el método `muestraResumen` (desde `Patinete` deberás llamar al método `muestraResumen` del padre).
 
     Añade a `inicio.php` el código para probar la clase:
 
@@ -1439,12 +1435,8 @@ Cada clase debe ir en un archivo php separado. Para facilitar su implementación
     Autonomía: 45 km
     </pre>
 
-<figure style="float: right;">
-    <img src="imagenes/03/03p322.png" width="250">
-    <figcaption>Añadimos Bicicleta Eléctrica</figcaption>
-</figure>
 
-322. Crea la clase `BicicletaElectrica` la cual hereda de `Vehiculo`. Añade los atributos `marchas` y `tipo` (por ejemplo, "Urbana", "Mixta", etc.). A continuación sobreescribe tanto el constructor como el método `muestraResumen`.
+322.   Crea la clase `BicicletaElectrica` la cual hereda de `Vehiculo`. Añade los atributos `marchas` y `tipo` (por ejemplo, "Urbana", "Mixta", etc.). A continuación sobreescribe tanto el constructor como el método `muestraResumen`.
 
     Añade a `inicio.php` el código para probar la clase:
 
@@ -1473,11 +1465,6 @@ Cada clase debe ir en un archivo php separado. Para facilitar su implementación
     Marchas: 3
     Tipo: Urbana
     </pre>
-
-<figure style="float: right;">
-    <img src="imagenes/03/03p323.png" width="350">
-    <figcaption>Añadimos Coche Eléctrico</figcaption>
-</figure>
 
 323. Crea la clase `CocheElectrico` la cual hereda de `Vehiculo`. Añade los atributos `marcaModelo`, `plazasMin` y `plazasMax`. A continuación añade el método `muestraInfoPlazas` (anteriormente asociado a los jugadores), el cual debe mostrar *Para un pasajero*, *Para X pasajeros* o *De X a Y pasajeros* dependiendo de los valores de los atributos creados. Finalmente, sobreescribe tanto el constructor como el método `muestraResumen`.
 
@@ -1511,7 +1498,7 @@ Cada clase debe ir en un archivo php separado. Para facilitar su implementación
 Llegados a este punto, nuestro modelo es similar al siguiente diagrama:
 
 <figure>
-    <img src="imagenes/03/03videoclub1.png" width="600">
+    <img src="imagenes/03/03alquilerMovilidad1.png" width="600">
     <figcaption>Modelo inicial de Alquiler de Movilidad Urbana</figcaption>
 </figure>
 
@@ -1643,7 +1630,7 @@ Crea el archivo `inicio2.php` con el siguiente código fuente para probar la cla
 El modelo completo quedará de la siguiente manera:
 
 <figure>
-    <img src="imagenes/03/03videoclub2.png" width="800">
+    <img src="imagenes/03/03alquilerMovilidad2.png" width="800">
     <figcaption>Modelo completo de Alquiler de Movilidad Urbana</figcaption>
 </figure>
 

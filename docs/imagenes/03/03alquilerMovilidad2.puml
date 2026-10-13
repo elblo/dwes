@@ -1,0 +1,94 @@
+@startuml
+!pragma layout smetana
+' Modelo completo de "Alquiler de Movilidad Urbana" v1.0 (tras la actividad 327).
+' Genera 03videoclub2.png, referenciado en docs/03phpoo.md.
+' En este punto Vehiculo aún NO es abstracta ni existe el interfaz Resumible
+' (se introducen en las actividades 328-329, ya en la versión final v0.337).
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+
+title Alquiler de Movilidad Urbana — modelo completo (v1.0)
+
+class Vehiculo {
+  + titulo : string
+  - numero : int
+  - precio : float
+  - {static} IVA : float = 0.21
+  + __construct(titulo : string, numero : int, precio : float)
+  + getNumero() : int
+  + getPrecio() : float
+  + getPrecioConIVA() : float
+  + muestraResumen() : void
+}
+
+class Patinete {
+  - autonomiaKm : int
+  - velocidadMaxKmH : int
+  + __construct(titulo : string, numero : int, precio : float,
+                autonomiaKm : int, velocidadMaxKmH : int = 0)
+  + muestraResumen() : void
+}
+
+class BicicletaElectrica {
+  - marchas : int
+  - tipo : string
+  + __construct(titulo : string, numero : int, precio : float,
+                marchas : int, tipo : string)
+  + muestraResumen() : void
+}
+
+class CocheElectrico {
+  - marcaModelo : string
+  - plazasMin : int
+  - plazasMax : int
+  + __construct(titulo : string, numero : int, precio : float,
+                marcaModelo : string, plazasMin : int, plazasMax : int)
+  + muestraInfoPlazas() : string
+  + muestraResumen() : void
+}
+
+class Cliente {
+  - nombre : string
+  - numero : int
+  - maxAlquilerConcurrente : int = 3
+  - numVehiculosAlquilados : int = 0
+  - vehiculosAlquilados : Vehiculo[]
+  + __construct(nombre : string, numero : int,
+                maxAlquilerConcurrente : int = 3)
+  + getNumero() : int
+  + setNumero(numero : int) : void
+  + getNumVehiculosAlquilados() : int
+  + tieneAlquilado(v : Vehiculo) : bool
+  + alquilar(v : Vehiculo) : bool
+  + devolver(numVehiculo : int) : bool
+  + listaAlquileres() : void
+  + muestraResumen() : void
+}
+
+class AlquilerMovilidad {
+  - direccion : string
+  - vehiculos : Vehiculo[]
+  - socios : Cliente[]
+  + __construct(direccion : string)
+  + incluirPatinete(titulo : string, precio : float, autonomiaKm : int) : void
+  + incluirBicicletaElectrica(titulo : string, precio : float,
+                              marchas : int, tipo : string) : void
+  + incluirCocheElectrico(titulo : string, precio : float,
+                          marcaModelo : string, plazasMin : int,
+                          plazasMax : int) : void
+  - incluirVehiculo(v : Vehiculo) : void
+  + listarVehiculos() : void
+  + incluirSocio(nombre : string, maxAlquilerConcurrente : int = 3) : void
+  + listarSocios() : void
+  + alquilarClienteVehiculo(numCliente : int, numVehiculo : int) : void
+}
+
+Patinete --|> Vehiculo
+BicicletaElectrica --|> Vehiculo
+CocheElectrico --|> Vehiculo
+
+AlquilerMovilidad "1" o-- "0..*" Vehiculo : vehiculos
+AlquilerMovilidad "1" o-- "0..*" Cliente  : socios
+Cliente           "1" o-- "0..*" Vehiculo : vehiculosAlquilados
+
+@enduml

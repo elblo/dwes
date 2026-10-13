@@ -1,0 +1,133 @@
+@startuml
+!pragma layout smetana
+' ============================================================
+'  Proyecto "Alquiler de Movilidad Urbana"  ->  modelo FINAL (v0.337)
+'  Fuente del diagrama del tema 03phpoo.md (PHP Orientado a Objetos).
+'  Notas:
+'   - El 2º parámetro de Vehiculo ("numero") se deduce de los
+'     códigos de prueba: new Vehiculo("...", 22, 3).
+'   - El enunciado alterna getPrecioConIVA() (act. 320) y
+'     getPrecioConIva() (act. 321-323); aquí se usa el primero.
+' ============================================================
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam linetype ortho
+
+title Modelo de clases — Alquiler de Movilidad Urbana (v0.337)
+
+package "Dwes\\AlquilerMovilidad" {
+
+  interface Resumible {
+    + muestraResumen() : void
+  }
+
+  abstract class Vehiculo {
+    + titulo : string
+    + alquilado : bool = false
+    - numero : int
+    - precio : float
+    - {static} IVA : float = 0.21
+    + __construct(titulo : string, numero : int, precio : float)
+    + getNumero() : int
+    + getPrecio() : float
+    + getPrecioConIVA() : float
+    + {abstract} muestraResumen() : void
+  }
+
+  class Patinete {
+    - autonomiaKm : int
+    - velocidadMaxKmH : int
+    + __construct(titulo : string, numero : int, precio : float,
+                  autonomiaKm : int, velocidadMaxKmH : int = 0)
+    + muestraResumen() : void
+  }
+
+  class BicicletaElectrica {
+    - marchas : int
+    - tipo : string
+    + __construct(titulo : string, numero : int, precio : float,
+                  marchas : int, tipo : string)
+    + muestraResumen() : void
+  }
+
+  class CocheElectrico {
+    - marcaModelo : string
+    - plazasMin : int
+    - plazasMax : int
+    + __construct(titulo : string, numero : int, precio : float,
+                  marcaModelo : string, plazasMin : int, plazasMax : int)
+    + muestraInfoPlazas() : string
+    + muestraResumen() : void
+  }
+
+  class Cliente {
+    - nombre : string
+    - numero : int
+    - maxAlquilerConcurrente : int = 3
+    - numVehiculosAlquilados : int = 0
+    - vehiculosAlquilados : Vehiculo[]
+    + __construct(nombre : string, numero : int,
+                  maxAlquilerConcurrente : int = 3)
+    + getNumero() : int
+    + setNumero(numero : int) : void
+    + getNumVehiculosAlquilados() : int
+    + tieneAlquilado(v : Vehiculo) : bool
+    + alquilar(v : Vehiculo) : Cliente
+    + devolver(numVehiculo : int) : Cliente
+    + listaAlquileres() : void
+    + muestraResumen() : void
+  }
+
+  class AlquilerMovilidad {
+    - direccion : string
+    - vehiculos : Vehiculo[]
+    - socios : Cliente[]
+    - numVehiculosAlquilados : int = 0
+    - numTotalAlquileres : int = 0
+    + __construct(direccion : string)
+    + incluirPatinete(titulo : string, precio : float, autonomiaKm : int) : void
+    + incluirBicicletaElectrica(titulo : string, precio : float,
+                                marchas : int, tipo : string) : void
+    + incluirCocheElectrico(titulo : string, precio : float,
+                            marcaModelo : string, plazasMin : int,
+                            plazasMax : int) : void
+    - incluirVehiculo(v : Vehiculo) : void
+    + listarVehiculos() : void
+    + incluirSocio(nombre : string, maxAlquilerConcurrente : int = 3) : void
+    + listarSocios() : void
+    + alquilarClienteVehiculo(numCliente : int, numVehiculo : int) : AlquilerMovilidad
+    + alquilarClienteVehiculos(numCliente : int, numVehiculos : int[]) : AlquilerMovilidad
+    + devolverClienteVehiculo(numCliente : int, numVehiculo : int) : AlquilerMovilidad
+    + devolverClienteVehiculos(numCliente : int, numVehiculos : int[]) : AlquilerMovilidad
+    + getNumVehiculosAlquilados() : int
+    + getNumTotalAlquileres() : int
+  }
+}
+
+package "Dwes\\AlquilerMovilidad\\Util" {
+  class AlquilerMovilidadException extends Exception
+  class VehiculoYaAlquiladoException extends AlquilerMovilidadException
+  class CupoSuperadoException extends AlquilerMovilidadException
+  class VehiculoNoEncontradoException extends AlquilerMovilidadException
+  class ClienteNoEncontradoException extends AlquilerMovilidadException
+}
+
+' ---------- Herencia / realización ----------
+Vehiculo ..|> Resumible
+Patinete --|> Vehiculo
+BicicletaElectrica --|> Vehiculo
+CocheElectrico --|> Vehiculo
+
+' ---------- Relaciones (agregación) ----------
+AlquilerMovilidad "1" o-- "0..*" Vehiculo : vehiculos
+AlquilerMovilidad "1" o-- "0..*" Cliente  : socios
+Cliente           "1" o-- "0..*" Vehiculo : vehiculosAlquilados
+
+' ---------- Dependencias: excepciones de aplicación ----------
+Cliente ..> VehiculoYaAlquiladoException
+Cliente ..> CupoSuperadoException
+Cliente ..> VehiculoNoEncontradoException
+AlquilerMovilidad ..> ClienteNoEncontradoException
+AlquilerMovilidad ..> AlquilerMovilidadException
+
+@enduml
