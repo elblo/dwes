@@ -111,6 +111,8 @@ A cada criterio se le asigna un porcentaje del total de la nota final y va asoci
         * Tutoriales
             * [Programación web en PHP - mclibre.org](https://www.mclibre.org/consultar/php/index.html)
             * [Tutorial para principiantes](https://www.ionos.es/digitalguide/paginas-web/creacion-de-paginas-web/tutorial-de-php-fundamentos-basicos-para-principiantes/)
+            * [PHP: The right way](https://phptherightway.com/)
+            * [PHP roadmap](https://roadmap.sh/php)
 
         * Referencias
             * [Documentación oficial de PHP](https://www.php.net/manual/es/)
@@ -136,6 +138,8 @@ A cada criterio se le asigna un porcentaje del total de la nota final y va asoci
             * [Docker: Laradock](https://laradock.io/)
     
     === "Cursos PHP"
+        * Bro Code (Youtube):
+            * [PHP Full course for free](https://www.youtube.com/watch?v=zZ6vybT1HQs)
         * OpenWebinars:
             * [PHP: fundamentos](https://openwebinars.net/academia/aprende/curso-php-basico)
             * [PHP: Ampliando conceptos](https://openwebinars.net/academia/aprende/php-ampliar-conceptos)
