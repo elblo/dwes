@@ -18,12 +18,12 @@
 - [X] 9.- (11) Plantillas. Ejercicios 246-247.
 - [X] 10.- (12) Cadenas. Ejercicios 250-253
 - [X] 11.- (13) Subcadenas. Ejercicios 254-257
-- [ ] 12.- (14) Math y tipos de datos. Ejercicios 260-262
+- [X] 12.- (14) Math y tipos de datos. Ejercicios 260-262
 - [ ] 13.- (15) Prueba escrita
 
 ## 3.- PHP Orientado a Objetos (18h)
 
-- [ ] 1.- (16) Clases y objetos. Constructor. Ejercicios 300-303
+- [X] 1.- (16) Clases y objetos. Constructor. Ejercicios 300-303
 - [ ] 2.- (17) Clases estáticas. Herencia. Ejercicios 304-307
 - [ ] 3.- (18) Herencia. Clases abstractas. Ejercicios 308-311
 - [ ] 4.- (19) Interfaces. Ejercicios 312-314
