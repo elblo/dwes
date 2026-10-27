@@ -1339,7 +1339,7 @@ Transforma `Persona` a una clase abstracta donde su método estático `toHtml(Pe
 
 314. `314EmpresaI.php`: Copia las clases del ejercicio anterior y modifícalas.
     * Crea un interfaz JSerializable, de manera que ofrezca los métodos:
-        * `toJSON(): string` → utiliza la función [`json_encode(mixed)`](https://www.php.net/manual/es/function.json-encode.php). La idea es obtener la representación JSON de las propiedades de un objeto. Tendrás que recorrerarlas y colocarlas en un mapa que se le pasará a la función. Por ejemplo:
+        * `toJSON(): string` → utiliza la función [`json_encode(mixed)`](https://www.php.net/manual/es/function.json-encode.php). La idea es obtener la representación JSON de las propiedades de un objeto. Tendrás que recorrerlas y colocarlas en un mapa que se le pasará a la función. Por ejemplo:
         ``` php
         <?php
         public function toJSON(): string {
@@ -1466,7 +1466,7 @@ Cada clase debe ir en un archivo php separado. Para facilitar su implementación
     Tipo: Urbana
     </pre>
 
-323. Crea la clase `CocheElectrico` la cual hereda de `Vehiculo`. Añade los atributos `marcaModelo`, `plazasMin` y `plazasMax`. A continuación añade el método `muestraInfoPlazas` (anteriormente asociado a los jugadores), el cual debe mostrar *Para un pasajero*, *Para X pasajeros* o *De X a Y pasajeros* dependiendo de los valores de los atributos creados. Finalmente, sobreescribe tanto el constructor como el método `muestraResumen`.
+1.   Crea la clase `CocheElectrico` la cual hereda de `Vehiculo`. Añade los atributos `marcaModelo`, `plazasMin` y `plazasMax`. A continuación añade el método `muestraInfoPlazas`, el cual debe mostrar *Para un pasajero*, *Para X pasajeros* o *De X a Y pasajeros* dependiendo de los valores de los atributos creados. Finalmente, sobreescribe tanto el constructor como el método `muestraResumen`.
 
     Añade a `inicio.php` el código para probar la clase:
 
