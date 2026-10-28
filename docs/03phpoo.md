@@ -1778,14 +1778,14 @@ Posteriormente crea los siguientes hijos (deben heredar de `AlquilerMovilidadExc
     * `ClienteNoEncontradoException`
 334. En `Cliente`, modifica los métodos `alquilar` y `devolver`, para que hagan uso de las nuevas excepciones (lanzándolas cuando sea necesario) y funcionen como métodos encadenados. Destacar que estos métodos no deben capturar estas excepciones, sólo las lanzan.
 En `AlquilerMovilidad`, modifica `alquilarClienteVehiculo` para capturar todas las excepciones que ahora lanza `Cliente` e informar al usuario en consecuencia.
-1.   Vamos a modificar el proyecto para que el sistema sepa qué vehículos están o no alquilados:
+335. **Vamos a modificar el proyecto para que el sistema sepa qué vehículos están o no alquilados**:
     * En `Vehiculo`, crea una propiedad pública cuyo nombre sea `alquilado` que inicialmente estará a `false`. Cuando se alquile, se pondrá a `true`. Al devolver, la volveremos a poner a `false`.
     * En `AlquilerMovilidad`, crea dos nuevas propiedades y sus getters:
         * `numVehiculosAlquilados`
         * `numTotalAlquileres`
-2.   Crea un nuevo método en `AlquilerMovilidad` llamado `alquilarClienteVehiculos(int numCliente, array numerosVehiculos)`, el cual debe recibir un array con los números de vehículos a alquilar.  
+336.   Crea un nuevo método en `AlquilerMovilidad` llamado `alquilarClienteVehiculos(int numCliente, array numerosVehiculos)`, el cual debe recibir un array con los números de vehículos a alquilar.  
 Antes de alquilarlos, debe comprobar que todos los vehículos estén disponibles, de manera que si uno no lo está, no se le alquile ninguno.
-1.   Crea dos nuevos métodos en `AlquilerMovilidad`, y mediante la definición, deduce qué deben realizar:
+337.   Crea dos nuevos métodos en `AlquilerMovilidad`, y mediante la definición, deduce qué deben realizar:
     * `devolverClienteVehiculo(int numCliente, int numeroVehiculo)`
     * `devolverClienteVehiculos(int numCliente, array numerosVehiculos)`
 
