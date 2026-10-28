@@ -1648,7 +1648,7 @@ Y para probar el proyecto, dentro `inicio3.php` colocaremos:
     <?php
     include_once "AlquilerMovilidad.php"; // No incluimos nada más
 
-    $am = new AlquilerMovilidad("Severo 8A"); 
+    $am = new AlquilerMovilidad("Martos Sur"); 
 
     //voy a incluir unos cuantos vehículos de prueba 
     $am->incluirCocheElectrico("Tesla Model 3", 19.99, "Tesla Model 3", 5, 5); 
