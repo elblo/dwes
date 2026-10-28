@@ -1339,7 +1339,7 @@ Transforma `Persona` a una clase abstracta donde su método estático `toHtml(Pe
 
 314. `314EmpresaI.php`: Copia las clases del ejercicio anterior y modifícalas.
     * Crea un interfaz JSerializable, de manera que ofrezca los métodos:
-        * `toJSON(): string` → utiliza la función [`json_encode(mixed)`](https://www.php.net/manual/es/function.json-encode.php). La idea es obtener la representación JSON de las propiedades de un objeto. Tendrás que recorrerlas y colocarlas en un mapa que se le pasará a la función. Por ejemplo:
+        * `toJSON(): string` → utiliza la función [`json_encode(mixed)`](https://www.php.net/manual/es/function.json-encode.php). La idea es obtener la representación JSON de las **propiedades de un objeto**. Tendrás que recorrerlas y colocarlas en un mapa que se le pasará a la función. Por ejemplo:
         ``` php
         <?php
         public function toJSON(): string {
@@ -1347,13 +1347,19 @@ Transforma `Persona` a una clase abstracta donde su método estático `toHtml(Pe
             foreach ($this as $clave => $valor) {
                 $mapa[$clave] = $valor;
             }
-            return json_encode($mapa);
+            return json_encode($mapa); 
+            // Ojo que también funciona con el objeto en lugar de construir el mapa
+            // return json_encode($this);
         }
         ?>
         ```
         * `toSerialize(): string` → utiliza la función [`serialize(mixed)`](https://www.php.net/manual/es/function.serialize.php)
     * Modifica todas las clases que no son abstractas para que implementen el interfaz creado.
 
+!!! tip "Serializar y deserializar objetos"
+    Con **serialize** obtenemos la representación de un objeto en un string y con **unserialize** a partir del string recuperamos el objeto totalmente funcional con sus propiedades y métodos.
+
+    Con **json_encode** obtenemos la representación en un string JSON de las propiedades del objeto y con **json_decode** a partir del string obtenemos el objeto con acceso únicamente a sus propiedades y no métodos.
 
 ### Proyecto Alquiler de Movilidad Urbana 1.0 (teoría hasta interfaces)
 
