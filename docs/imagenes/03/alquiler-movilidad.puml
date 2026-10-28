@@ -37,16 +37,14 @@ package "Dwes\\AlquilerMovilidad" {
   class Patinete {
     - autonomiaKm : int
     - velocidadMaxKmH : int
-    + __construct(titulo : string, numero : int, precio : float,
-                  autonomiaKm : int, velocidadMaxKmH : int = 0)
+    + __construct(titulo : string, numero : int, precio : float, autonomiaKm : int, velocidadMaxKmH : int = 0)
     + muestraResumen() : void
   }
 
   class BicicletaElectrica {
     - marchas : int
     - tipo : string
-    + __construct(titulo : string, numero : int, precio : float,
-                  marchas : int, tipo : string)
+    + __construct(titulo : string, numero : int, precio : float, marchas : int, tipo : string)
     + muestraResumen() : void
   }
 
@@ -54,8 +52,7 @@ package "Dwes\\AlquilerMovilidad" {
     - marcaModelo : string
     - plazasMin : int
     - plazasMax : int
-    + __construct(titulo : string, numero : int, precio : float,
-                  marcaModelo : string, plazasMin : int, plazasMax : int)
+    + __construct(titulo : string, numero : int, precio : float, marcaModelo : string, plazasMin : int, plazasMax : int)
     + muestraInfoPlazas() : string
     + muestraResumen() : void
   }
@@ -66,8 +63,7 @@ package "Dwes\\AlquilerMovilidad" {
     - maxAlquilerConcurrente : int = 3
     - numVehiculosAlquilados : int = 0
     - vehiculosAlquilados : Vehiculo[]
-    + __construct(nombre : string, numero : int,
-                  maxAlquilerConcurrente : int = 3)
+    + __construct(nombre : string, numero : int, maxAlquilerConcurrente : int = 3)
     + getNumero() : int
     + setNumero(numero : int) : void
     + getNumVehiculosAlquilados() : int
@@ -81,20 +77,17 @@ package "Dwes\\AlquilerMovilidad" {
   class AlquilerMovilidad {
     - direccion : string
     - vehiculos : Vehiculo[]
-    - socios : Cliente[]
+    - clientes : Cliente[]
     - numVehiculosAlquilados : int = 0
     - numTotalAlquileres : int = 0
     + __construct(direccion : string)
     + incluirPatinete(titulo : string, precio : float, autonomiaKm : int) : void
-    + incluirBicicletaElectrica(titulo : string, precio : float,
-                                marchas : int, tipo : string) : void
-    + incluirCocheElectrico(titulo : string, precio : float,
-                            marcaModelo : string, plazasMin : int,
-                            plazasMax : int) : void
+    + incluirBicicletaElectrica(titulo : string, precio : float, marchas : int, tipo : string) : void
+    + incluirCocheElectrico(titulo : string, precio : float, marcaModelo : string, plazasMin : int, plazasMax : int) : void
     - incluirVehiculo(v : Vehiculo) : void
     + listarVehiculos() : void
-    + incluirSocio(nombre : string, maxAlquilerConcurrente : int = 3) : void
-    + listarSocios() : void
+    + incluirCliente(nombre : string, maxAlquilerConcurrente : int = 3) : void
+    + listarClientes() : void
     + alquilarClienteVehiculo(numCliente : int, numVehiculo : int) : AlquilerMovilidad
     + alquilarClienteVehiculos(numCliente : int, numVehiculos : int[]) : AlquilerMovilidad
     + devolverClienteVehiculo(numCliente : int, numVehiculo : int) : AlquilerMovilidad
@@ -120,7 +113,7 @@ CocheElectrico --|> Vehiculo
 
 ' ---------- Relaciones (agregación) ----------
 AlquilerMovilidad "1" o-- "0..*" Vehiculo : vehiculos
-AlquilerMovilidad "1" o-- "0..*" Cliente  : socios
+AlquilerMovilidad "1" o-- "0..*" Cliente  : clientes
 Cliente           "1" o-- "0..*" Vehiculo : vehiculosAlquilados
 
 ' ---------- Dependencias: excepciones de aplicación ----------
