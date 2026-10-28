@@ -1629,8 +1629,8 @@ Crea el archivo `inicio2.php` con el siguiente código fuente para probar la cla
     </pre>
 
 327. Llegado a este punto, vamos a relacionar los clientes y los vehículos mediante la clase `AlquilerMovilidad`. Así pues crea la clase que representa el gráfico, teniendo en cuenta que:
-    * `vehiculos` es un array de `Vehiculo` (también podemos mantener `productos` si así lo prefieres, pero lo ideal es usar `vehiculos`)
-    * `socios` es un array de `Cliente`
+    * `vehiculos` es un array de `Vehiculo`
+    * `clientes` es un array de `Cliente`
     * Los métodos públicos de incluir algún vehículo, crearán la instancia de la clase correspondiente y llamarán al método privado de `incluirVehiculo`, el cual es el encargado de introducirlo dentro del array.
 
 El modelo completo quedará de la siguiente manera:
@@ -1661,21 +1661,21 @@ Y para probar el proyecto, dentro `inicio3.php` colocaremos:
     //listo los vehículos 
     $am->listarVehiculos(); 
 
-    //voy a crear algunos socios 
-    $am->incluirSocio("Amancio Ortega"); 
-    $am->incluirSocio("Pablo Picasso", 2); 
+    //voy a crear algunos clientes 
+    $am->incluirCliente("Amancio Ortega"); 
+    $am->incluirCliente("Pablo Picasso", 2); 
 
     $am->alquilarClienteVehiculo(1,2); 
     $am->alquilarClienteVehiculo(1,3); 
-    //alquilo otra vez el vehículo 2 al socio 1. 
+    //alquilo otra vez el vehículo 2 al cliente 1. 
     // no debe dejarme porque ya lo tiene alquilado 
     $am->alquilarClienteVehiculo(1,2); 
-    //alquilo el vehículo 6 al socio 1. 
-    //no se puede porque el socio 1 tiene 2 alquileres como máximo 
+    //alquilo el vehículo 6 al cliente 1. 
+    //no se puede porque el cliente 1 tiene 2 alquileres como máximo 
     $am->alquilarClienteVehiculo(1,6); 
 
-    //listo los socios 
-    $am->listarSocios();
+    //listo los clientes 
+    $am->listarClientes();
     ```
 
 === "Navegador"
@@ -1716,8 +1716,8 @@ Y para probar el proyecto, dentro `inicio3.php` colocaremos:
     3.5 € (IVA no incluido)
     Autonomía: 45 km
 
-    Incluido socio 0
-    Incluido socio 1
+    Incluido cliente 0
+    Incluido cliente 1
 
     **Alquilado vehículo a**: Pablo Picasso
 
@@ -1739,16 +1739,16 @@ Y para probar el proyecto, dentro `inicio3.php` colocaremos:
 
     Este cliente tiene 2 elementos alquilados. No puede alquilar más en este sistema de movilidad hasta que no devuelva algo
 
-    Listado de 2 socios del videoclub:
+    Listado de 2 clientes:
     1.- **Cliente 0**: Amancio Ortega
     Alquileres actuales: 0
     2.- **Cliente 1**: Pablo Picasso
     Alquileres actuales: 2
     </pre>
 
-328. Transforma `Vehiculo` a una clase abstracta y comprueba que todo sigue funcionando. ¿Qué conseguimos al hacerla abstracta?
+1.   Transforma `Vehiculo` a una clase abstracta y comprueba que todo sigue funcionando. ¿Qué conseguimos al hacerla abstracta?
 
-329. Crea un interfaz `Resumible`, de manera que las clases que lo implementen deben ofrecer el método `muestraResumen()`. Modifica la clase `Vehiculo` y haz que implemente el interfaz. ¿Hace falta que también lo implementen los hijos?
+2.   Crea un interfaz `Resumible`, de manera que las clases que lo implementen deben ofrecer el método `muestraResumen()`. Modifica la clase `Vehiculo` y haz que implemente el interfaz. ¿Hace falta que también lo implementen los hijos?
 
 ### Proyecto Alquiler de Movilidad Urbana 2.0 (teoría hasta el final)
 
@@ -1777,15 +1777,15 @@ Posteriormente crea los siguientes hijos (deben heredar de `AlquilerMovilidadExc
     * `VehiculoNoEncontradoException`
     * `ClienteNoEncontradoException`
 334. En `Cliente`, modifica los métodos `alquilar` y `devolver`, para que hagan uso de las nuevas excepciones (lanzándolas cuando sea necesario) y funcionen como métodos encadenados. Destacar que estos métodos no deben capturar estas excepciones, sólo las lanzan.
-En `AlquilerMovilidad`, modifica `alquilarClienteVehiculo` (o `alquilarSocioProducto` si mantienes ese nombre, pero lo ideal es adaptarlo) para capturar todas las excepciones que ahora lanza `Cliente` e informar al usuario en consecuencia.
-335. Vamos a modificar el proyecto para que el sistema sepa qué vehículos están o no alquilados:
+En `AlquilerMovilidad`, modifica `alquilarClienteVehiculo` para capturar todas las excepciones que ahora lanza `Cliente` e informar al usuario en consecuencia.
+1.   Vamos a modificar el proyecto para que el sistema sepa qué vehículos están o no alquilados:
     * En `Vehiculo`, crea una propiedad pública cuyo nombre sea `alquilado` que inicialmente estará a `false`. Cuando se alquile, se pondrá a `true`. Al devolver, la volveremos a poner a `false`.
     * En `AlquilerMovilidad`, crea dos nuevas propiedades y sus getters:
         * `numVehiculosAlquilados`
         * `numTotalAlquileres`
-336. Crea un nuevo método en `AlquilerMovilidad` llamado `alquilarClienteVehiculos(int numCliente, array numerosVehiculos)`, el cual debe recibir un array con los números de vehículos a alquilar.  
+2.   Crea un nuevo método en `AlquilerMovilidad` llamado `alquilarClienteVehiculos(int numCliente, array numerosVehiculos)`, el cual debe recibir un array con los números de vehículos a alquilar.  
 Antes de alquilarlos, debe comprobar que todos los vehículos estén disponibles, de manera que si uno no lo está, no se le alquile ninguno.
-337. Crea dos nuevos métodos en `AlquilerMovilidad`, y mediante la definición, deduce qué deben realizar:
+1.   Crea dos nuevos métodos en `AlquilerMovilidad`, y mediante la definición, deduce qué deben realizar:
     * `devolverClienteVehiculo(int numCliente, int numeroVehiculo)`
     * `devolverClienteVehiculos(int numCliente, array numerosVehiculos)`
 
