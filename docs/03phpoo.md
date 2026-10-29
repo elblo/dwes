@@ -1050,7 +1050,7 @@ class MiExcepcion extends Exception {
         // código propio
         parent::__construct($msj, $codigo, $previa);
     }
-    public function __toString() {
+    public function __toString() : string {
         return __CLASS__ . ": [{$this->code}]: {$this->message}\n";
     }
     public function miFuncion() {
