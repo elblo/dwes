@@ -1,0 +1,51 @@
+@startuml
+!pragma layout smetana
+' Modelo inicial de "Alquiler de Movilidad Urbana" (tras la actividad 323).
+' Genera 03videoclub1.png, referenciado en docs/03phpoo.md.
+skinparam classAttributeIconSize 0
+
+title Alquiler de Movilidad Urbana — modelo inicial
+
+class Vehiculo {
+  + titulo : string
+  - numero : int
+  - precio : float
+  - {static} IVA : float = 0.21
+  + __construct(titulo : string, numero : int, precio : float)
+  + getNumero() : int
+  + getPrecio() : float
+  + getPrecioConIVA() : float
+  + muestraResumen() : void
+}
+
+class Patinete {
+  - autonomiaKm : int
+  - velocidadMaxKmH : int
+  + __construct(titulo : string, numero : int, precio : float,
+                autonomiaKm : int, velocidadMaxKmH : int = 0)
+  + muestraResumen() : void
+}
+
+class BicicletaElectrica {
+  - marchas : int
+  - tipo : string
+  + __construct(titulo : string, numero : int, precio : float,
+                marchas : int, tipo : string)
+  + muestraResumen() : void
+}
+
+class CocheElectrico {
+  - marcaModelo : string
+  - plazasMin : int
+  - plazasMax : int
+  + __construct(titulo : string, numero : int, precio : float,
+                marcaModelo : string, plazasMin : int, plazasMax : int)
+  + muestraInfoPlazas() : string
+  + muestraResumen() : void
+}
+
+Patinete --|> Vehiculo
+BicicletaElectrica --|> Vehiculo
+CocheElectrico --|> Vehiculo
+
+@enduml
