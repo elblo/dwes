@@ -152,14 +152,14 @@ class MayorMenor {
 
 ### Recibir/enviar objetos
 
-Es recomendable indicarlo en el tipo de parámetros. Si el objeto puede devolver nulos se pone `?` delante del nombre de la clase.
+En las funciones y métodos de clases es recomendable indicar el tipo de los parámetros y del valor devuelto. **Si la función puede devolver un valor nulo, se pone `?` delante del nombre de la clase que devuelve**.
 
 !!! important "Objetos por referencia"
     Los objetos que se envían y reciben como parámetros siempre se pasan por referencia.
 
 ``` php hl_lines="2"
 <?php
-function maymen(array $numeros) : ?MayorMenor {
+function maymen(array $numeros) : ?MayorMenor { // También valdría --> MayorMenor | null
     $a = max($numeros);
     $b = min($numeros);
 
