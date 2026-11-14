@@ -537,13 +537,15 @@ Las operaciones que podemos realizar con la sesión son:
     session_start(); // inicia o carga la sesión si ya existe
     echo session_id(); // devuelve el id de sesión (el que se envía como cookie al usuario)
     $_SESSION[clave] = valor; // asignación
-    session_destroy(); // destruye la sesión
+    session_destroy(); // destruye la sesión en el servidor
     unset($_SESSION[clave]); // borrado de un dato de la sesión
     session_unset(); // borra todas las variables de la sesión
 ```
 
 !!! info "Destruir la sesión y sus variables"
-    Al hacer `session_destroy()` se destruye toda la información asociada con la sesión actual, pero no destruye ninguna de las variables globales asociadas con la sesión, ni destruye la cookie de sesión. Para liberar todas las variables de la sesión, utilizar antes `session_unset()`.
+    Al hacer `session_destroy()` se destruye toda la información asociada con la sesión actual en el servidor, pero no destruye ninguna de las variables globales asociadas con la sesión, ni destruye la cookie de sesión. Para liberar todas las variables de la sesión, utilizar antes `session_unset()`.
+
+    Ojo, porque **el navegador sigue guardando la cookie con el id de sesión** porque no ha expirado explícitamente y en la siguiente petición HTTP volverá a enviar el mismo PHPSESSID al servidor, de tal forma que si se hace *session_start()*, PHP podría crear una sesión reutilizando ese identificador. Es algo normal.
 
 #### Ejemplo guardar/recuperar en sesión
 
