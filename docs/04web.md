@@ -396,7 +396,20 @@ En PHP creamos una cookie, que se enviará con el resto de encabezados HTTP, med
 Destacar que el nombre no puede contener espacios ni el caracter `;`. Respecto al contenido de la cookie, no puede superar los 4 KB y lo que **se guarda es una cadena de texto**, aunque mediante las funciones `json_encode` y `json_decode` podríamos guardar y recurar un array convirtiéndolo a JSON.
 
 !!! danger "Uso de setcookie()"
-    setcookie() define una cookie que será enviada junto con el resto de los encabezados HTTP. Al igual que con otros encabezados, las cookies deben ser enviadas antes de cualquier otra salida (esto es una restricción del protocolo HTTP, no de PHP): cualquier etiqueta <html> o <head> e incluso caracteres de espacio en blanco.
+    setcookie() define un encabezado HTTP Set-Cookie que se enviará al cliente para que el navegador cree la cookie. Al igual que con otros encabezados, debe ser enviado antes de cualquier otra salida (esto es una restricción del protocolo HTTP, no de PHP): cualquier etiqueta <html> o <head> e incluso caracteres de espacio en blanco.
+
+    Por tanto, **si dentro de un mismo script se llaman varias veces a setcookie() con el mismo nombre de cookie, el navegador recibirá varios encabezados Set-Cookie y el último sobrescribirá a los anteriores**. Esto explica por qué, si se intenta eliminar una cookie con setcookie() y justo después se vuelve a crear con otro setcookie(), la cookie nunca se elimina: el segundo encabezado prevalece sobre el primero.
+
+    Además, el **array $_COOKIE contiene únicamente los valores que el navegador envió con la petición actual**, por lo que no se actualiza cuando se llama a setcookie() en el mismo script: las modificaciones no serán visibles hasta la siguiente petición. Puedes comprobarlo con el siguiente ejemplo:
+
+    ```php
+    <?php
+        $contador = $_COOKIE['contador'] ?? 0;
+        setcookie('contador', ++$contador);
+
+        echo "<p>Contador: " . $contador . "</p>";
+        echo "<p>Valor cookie: " . $_COOKIE['contador'] . "</p>"; // Va siempre 1 por detrás
+    ```
 
 #### Ejemplos de uso de cookies
 
