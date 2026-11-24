@@ -599,8 +599,9 @@ Vamos a ver mediante un ejemplo como podemos insertar en un página datos en la 
 
     ``` php
     <?php
-        session_start();
         require_once "User.php"; // Cargar clase
+        
+        session_start();
 
         // Crear objeto
         $usuario = new User("Juan", "juan@example.com");
@@ -621,8 +622,9 @@ Vamos a ver mediante un ejemplo como podemos insertar en un página datos en la 
 
     ```php hl_lines="3"
     <?php
+        require_once "User.php"; // IMPORTANTE: Cargar clase antes del session_start() para que sepa cómo recuperarla
+
         session_start();
-        require_once "User.php"; // IMPORTANTE: Cargar clase antes de usarla
 
         if (isset($_SESSION['usuario']) && isset($_SESSION['preferencias'])) {
             $usuario = $_SESSION['usuario']; // Recuperar objeto
