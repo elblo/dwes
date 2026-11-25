@@ -29,7 +29,7 @@ Funcionalmente, es similar a Maven (Java) / npm (JS).
 
 ### Instalación
 
-Si estamos usando XAMPP, hemos de instalar *Composer* en el propio sistema operativo. Se recomienda seguir las [instrucciones oficiales](https://getcomposer.org/doc/00-intro.md) según el sistema operativo a emplear. Léelas detenidamente y verás que podrás optar por una instalación automática mediante un *.exe* (Windows) o la descarga de una archivo PHP *installer* en nuestro proyecto que ejecutamos para generar el archivo *composher.phar*, que es el que lanzaremos para ejecutar Composer (Unix).
+Si estamos usando el servidor integrado de PHP o herramientas como XAMPP o Laragon, hemos de instalar *Composer* en el propio sistema operativo. Se recomienda seguir las [instrucciones oficiales](https://getcomposer.org/doc/00-intro.md) según el sistema operativo a emplear. Léelas detenidamente y verás que podrás optar por una instalación automática mediante un *.exe* (Windows) o la descarga de una archivo PHP *installer* en nuestro proyecto que ejecutamos para generar el archivo *composher.phar*, que es el que lanzaremos para ejecutar Composer (Unix), dando la opción de instalarlo de forma local al proyecto o global.
 
 En cambio, si usamos *Docker*, necesitamos modificar la configuración de nuestro contenedor. Basta con modificar el archivo `Dockerfile` y añadir el siguiente comando:
 
