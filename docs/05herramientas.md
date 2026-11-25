@@ -113,8 +113,6 @@ Además se crea el archivo `composer.lock`, que almacena la versión exacta que 
 
     **composer install** instala en *vendor/* las versiones exactas fijadas en *composer.lock* (o lo genera desde *composer.json* si no existe).
 
-
-
 ### `autoload.php`
 
 *Composer* crea de forma automática en `vendor/autoload.php` el código para incluir de forma automática todas las librerías que tengamos configuradas en `composer.json`.
