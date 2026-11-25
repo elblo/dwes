@@ -79,10 +79,10 @@ A la hora de indicar cada librería introduciremos:
 * el nombre de la librería, compuesta tanto por el creador o "vendor", como por el nombre del proyecto. Ejemplos: `monolog/monolog` o `laravel/installer`.
 * la versión de cada librería. Tenemos diversas opciones para indicarla:
 
-    * Directamente: 1.4.2
-    * Con comodines: 1.*
-    * A partir de: >= 2.0.3
-    * Sin rotura de cambios: ^1.3.2 // >=1.3.2 <2.0.0
+    * Directamente: "1.4.2" <-- Instala versión exacta 1.4.2
+    * Con comodines: "1.*" <-- Equivale a >=1.0.0 <2.0.0
+    * A partir de: ">=2.0.3" <-- Puede instalar cualquier versión superior, incluida una versión mayor 3.0
+    * Sin rotura de cambios: "^1.3.2" <-- Equivale a >=1.3.2 <2.0.0
 
 ### Actualizar librerías
 
