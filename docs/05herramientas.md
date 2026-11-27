@@ -585,7 +585,7 @@ Veámoslo con un ejemplo. Supongamos que tenemos una clase que representa un cli
 * homónimas.
 * 
 * @package Dwes\AlquilerMovilidad\Model
-* @author Eladio Blanco <eladio.blanco@fernando3martos.com>
+* @author Aitor Medrano <a.medrano@edu.gva.es>
 */
 class Cliente {
 
